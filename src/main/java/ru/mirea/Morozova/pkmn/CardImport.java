@@ -60,14 +60,17 @@ public class CardImport {
             card.setEvolvesFrom(cardEvolves.getCard());
         }
 
-        AttackSkill attackSkill = new AttackSkill();
+        AttackSkill attackSkill;
         ArrayList<AttackSkill> skill = new ArrayList<AttackSkill>();
         String[] skills = lines[5].split(" / ");
-        for(int i = 0; i < skills.length/3; i += 3){
+        for(int i = 0; i < skills.length; i += 3){
+            attackSkill = new AttackSkill();
+
             attackSkill.setCost(skills[i]);
             attackSkill.setName(skills[i+1]);
             attackSkill.setDamage(Integer.parseInt(skills[i+2]));
-            skill.add(attackSkill);
+
+            skill.add(i/3, attackSkill);
         }
         card.setSkill(skill);
 
