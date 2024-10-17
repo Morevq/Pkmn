@@ -1,4 +1,6 @@
-package ru.mirea.Morozova.pkmn;
+package ru.mirea.Morozova;
+
+import ru.mirea.pkmn.Card;
 
 import java.io.IOException;
 
@@ -11,7 +13,7 @@ public class PkmnApplication {
         System.out.println(my_card);
 
         CardExport cardExport = new CardExport(my_card);
-        Card import_some_card = cardImport.exportFromCrd("src/main/resoures/Sigilyph.crd");
+        Card import_some_card = cardExport.deserialize("src/main/resoures/Pyroar.crd");
         System.out.println(import_some_card);
     }
 }
