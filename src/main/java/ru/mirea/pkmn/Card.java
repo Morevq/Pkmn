@@ -1,19 +1,20 @@
-package ru.mirea.Morozova.pkmn;
+package ru.mirea.pkmn;
 
 import java.io.Serializable;
 import java.util.List;
 
 public class Card implements Serializable {
+    public static final long serialVersionUID = 1L;
     private PokemonStage pokemonStage;
     private String name;
     private int hp;
     private EnergyType pokemonType;
     private Card evolvesFrom;
-    private List<AttackSkill> skill;
+    private List<AttackSkill> skills;
     private EnergyType weaknessType;
     private EnergyType resistanceType;
     private String retreatCost;
-    private String gameName;
+    private String gameSet;
     private char regulationMark;
     private Student pokemonOwner;
 
@@ -27,11 +28,11 @@ public class Card implements Serializable {
         this.hp = hp;
         this.pokemonType = pokemonType;
         this.evolvesFrom = evolvesFrom;
-        this.skill = skill;
+        this.skills = skill;
         this.weaknessType = weaknessType;
         this.resistanceType = resistanceType;
         this.retreatCost = retreatCost;
-        this.gameName = gameName;
+        this.gameSet = gameName;
         this.regulationMark = regulationMark;
         this.pokemonOwner = pokemonOwner;
     }
@@ -47,11 +48,11 @@ public class Card implements Serializable {
                 "hp=" + hp + '\n' +
                 "pokemonType=" + pokemonType + '\n' +
                 "evolvesFrom=" + evolvesFrom + '\n' +
-                "skill=" + skill + '\n' +
+                "skill=" + skills + '\n' +
                 "weaknessType=" + weaknessType + '\n' +
                 "resistanceType=" + resistanceType + '\n' +
                 "retreatCost='" + retreatCost + '\'' + '\n' +
-                "gameName='" + gameName + '\'' + '\n' +
+                "gameName='" + gameSet + '\'' + '\n' +
                 "regulationMark=" + regulationMark + '\n' +
                 "pokemonOwner=" + pokemonOwner + '\n' +
                 '}';
@@ -97,12 +98,12 @@ public class Card implements Serializable {
         this.evolvesFrom = evolvesFrom;
     }
 
-    public List<AttackSkill> getSkill() {
-        return skill;
+    public List<AttackSkill> getSkills() {
+        return skills;
     }
 
-    public void setSkill(List<AttackSkill> skill) {
-        this.skill = skill;
+    public void setSkills(List<AttackSkill> skills) {
+        this.skills = skills;
     }
 
     public EnergyType getWeaknessType() {
@@ -129,12 +130,12 @@ public class Card implements Serializable {
         this.retreatCost = retreatCost;
     }
 
-    public String getGameName() {
-        return gameName;
+    public String getGameSet() {
+        return gameSet;
     }
 
-    public void setGameName(String gameName) {
-        this.gameName = gameName;
+    public void setGameSet(String gameSet) {
+        this.gameSet = gameSet;
     }
 
     public char getRegulationMark() {

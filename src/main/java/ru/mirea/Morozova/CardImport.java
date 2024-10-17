@@ -1,4 +1,6 @@
-package ru.mirea.Morozova.pkmn;
+package ru.mirea.Morozova;
+
+import ru.mirea.pkmn.*;
 
 import java.io.*;
 import java.util.*;
@@ -23,13 +25,6 @@ public class CardImport {
 
     private void setCard(Card card) {
         this.card = card;
-    }
-
-    public Card exportFromCrd(String filename) throws IOException, ClassNotFoundException {
-        FileInputStream fileInputStream = new FileInputStream(filename);
-        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-        Card card = (Card) objectInputStream.readObject();
-        return card;
     }
 
     private String[] readLines(String filename) throws IOException {
@@ -72,12 +67,12 @@ public class CardImport {
 
             skill.add(i/3, attackSkill);
         }
-        card.setSkill(skill);
+        card.setSkills(skill);
 
         card.setWeaknessType(type(lines[6]));
         card.setResistanceType(type(lines[7]));
         card.setRetreatCost(lines[8]);
-        card.setGameName(lines[9]);
+        card.setGameSet(lines[9]);
         card.setRegulationMark(lines[10].charAt(0));
 
         String[] ownerStrings = lines[11].split(" / ");
