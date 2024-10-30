@@ -17,24 +17,27 @@ public class Card implements Serializable {
     private String gameSet;
     private char regulationMark;
     private Student pokemonOwner;
+    String number;
 
     public Card(PokemonStage pokemonStage, String name, int hp,
                 EnergyType pokemonType, Card evolvesFrom,
-                List<AttackSkill> skill, EnergyType weaknessType,
-                EnergyType resistanceType, String retreatCost, String gameName,
-                char regulationMark, Student pokemonOwner) {
+                List<AttackSkill> skills, EnergyType weaknessType,
+                EnergyType resistanceType, String retreatCost,
+                String gameSet, char regulationMark, Student pokemonOwner,
+                String number) {
         this.pokemonStage = pokemonStage;
         this.name = name;
         this.hp = hp;
         this.pokemonType = pokemonType;
         this.evolvesFrom = evolvesFrom;
-        this.skills = skill;
+        this.skills = skills;
         this.weaknessType = weaknessType;
         this.resistanceType = resistanceType;
         this.retreatCost = retreatCost;
-        this.gameSet = gameName;
+        this.gameSet = gameSet;
         this.regulationMark = regulationMark;
         this.pokemonOwner = pokemonOwner;
+        this.number = number;
     }
 
     public Card() {
@@ -43,19 +46,28 @@ public class Card implements Serializable {
     @Override
     public String toString() {
         return "Card{" + '\n' +
-                "pokemonStage=" + pokemonStage + '\n' +
-                "name='" + name + '\'' + '\n' +
-                "hp=" + hp + '\n' +
-                "pokemonType=" + pokemonType + '\n' +
-                "evolvesFrom=" + evolvesFrom + '\n' +
-                "skill=" + skills + '\n' +
-                "weaknessType=" + weaknessType + '\n' +
-                "resistanceType=" + resistanceType + '\n' +
-                "retreatCost='" + retreatCost + '\'' + '\n' +
-                "gameName='" + gameSet + '\'' + '\n' +
-                "regulationMark=" + regulationMark + '\n' +
-                "pokemonOwner=" + pokemonOwner + '\n' +
+                " pokemonStage=" + pokemonStage + '\n' +
+                " name='" + name + '\'' + '\n' +
+                " hp=" + hp + '\n' +
+                " pokemonType=" + pokemonType + '\n' +
+                " evolvesFrom=" + evolvesFrom + '\n' +
+                " skills=" + skills + '\n' +
+                " weaknessType=" + weaknessType + '\n' +
+                " resistanceType=" + resistanceType + '\n' +
+                " retreatCost='" + retreatCost + '\'' + '\n' +
+                " gameSet='" + gameSet + '\'' + '\n' +
+                " regulationMark=" + regulationMark + '\n' +
+                " pokemonOwner=" + pokemonOwner + '\n' +
+                " number=" + number + '\n' +
                 '}';
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public PokemonStage getPokemonStage() {
