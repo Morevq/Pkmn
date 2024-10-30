@@ -9,7 +9,7 @@ public class Student implements Serializable {
     private String patronicName;
     private String group;
 
-    public Student(String firstName, String surName, String patronicName, String group) {
+    public Student(String surName, String firstName, String patronicName, String group) {
         this.firstName = firstName;
         this.surName = surName;
         this.patronicName = patronicName;
