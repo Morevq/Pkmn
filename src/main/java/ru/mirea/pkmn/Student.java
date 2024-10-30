@@ -6,13 +6,13 @@ public class Student implements Serializable {
     public static final long serialVersionUID = 1L;
     private String firstName;
     private String surName;
-    private String familyName;
+    private String patronicName;
     private String group;
 
-    public Student(String firstName, String surName, String familyName, String group) {
+    public Student(String firstName, String surName, String patronicName, String group) {
         this.firstName = firstName;
         this.surName = surName;
-        this.familyName = familyName;
+        this.patronicName = patronicName;
         this.group = group;
     }
 
@@ -24,7 +24,7 @@ public class Student implements Serializable {
         return "Student{" +
                 "firstName='" + firstName + '\'' +
                 ", surName='" + surName + '\'' +
-                ", familyName='" + familyName + '\'' +
+                ", familyName='" + patronicName + '\'' +
                 ", group='" + group + '\'' +
                 '}';
     }
@@ -45,12 +45,12 @@ public class Student implements Serializable {
         this.surName = surName;
     }
 
-    public String getFamilyName() {
-        return familyName;
+    public String getPatronicName() {
+        return patronicName;
     }
 
-    public void setFamilyName(String familyName) {
-        this.familyName = familyName;
+    public void setPatronicName(String patronicName) {
+        this.patronicName = patronicName;
     }
 
     public String getGroup() {

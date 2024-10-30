@@ -1,4 +1,4 @@
-package ru.mirea.Morozova;
+package ru.mirea.pkmn.Morozova;
 
 import ru.mirea.pkmn.Card;
 
@@ -6,17 +6,20 @@ import java.io.*;
 
 public class CardExport {
     public static final long serialVersionUID = 1L;
-    public CardExport(Card card) throws IOException {
-        serilized(card);
+    Card card;
+
+    public CardExport(Card card){
+
     }
 
-    private void serilized(Card card) throws IOException {
+    public Card serilized(Card card) throws IOException {
         File myFile = new File(card.getName() + ".crd");
         FileOutputStream fileOutputStream = new FileOutputStream(myFile);
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
         objectOutputStream.writeObject(card);
         objectOutputStream.close();
         fileOutputStream.close();
+        return card;
     }
 
     public Card deserialize(String filename) throws IOException, ClassNotFoundException {
@@ -25,6 +28,10 @@ public class CardExport {
         Card card = (Card) objectInputStream.readObject();
         objectInputStream.close();
         fileInputStream.close();
+        return card;
+    }
+
+    public Card getCard() {
         return card;
     }
 }

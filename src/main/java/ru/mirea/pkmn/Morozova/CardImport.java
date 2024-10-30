@@ -1,4 +1,4 @@
-package ru.mirea.Morozova;
+package ru.mirea.pkmn.Morozova;
 
 import ru.mirea.pkmn.*;
 
@@ -77,6 +77,9 @@ public class CardImport {
 
         String[] ownerStrings = lines[11].split(" / ");
         Student owner = new Student(ownerStrings[0], ownerStrings[1], ownerStrings[2], ownerStrings[3]);
+
+        card.setNumber(lines[12]);
+
         card.setPokemonOwner(owner);
         return card;
     }
