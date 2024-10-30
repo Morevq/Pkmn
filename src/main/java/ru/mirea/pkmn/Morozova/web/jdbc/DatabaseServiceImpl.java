@@ -200,6 +200,12 @@ public class DatabaseServiceImpl implements DatabaseService {
         }
     }
 
+    public void editStudent(String studentSurname, String studentName) throws SQLException {
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(
+                "UPDATE student SET \"familyName\" = '" + studentSurname + "', \"firstName\" = '" + studentName + "' WHERE \"familyName\" = '" + studentSurname + "';");
+    }
+
     //получение данных о студенте из БД
     @Override
     public Student getStudentFromDatabase(String studentSurname) {
@@ -288,5 +294,7 @@ public class DatabaseServiceImpl implements DatabaseService {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println("Success " + getStudentFromDatabase(student.getSurName()));
     }
+
 }
