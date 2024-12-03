@@ -1,4 +1,4 @@
-package ru.mirea.pkmn.Morozova;
+/*package ru.mirea.pkmn.Morozova;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import ru.mirea.pkmn.AttackSkill;
@@ -28,7 +28,7 @@ public class PkmnApplication {
                 .collect(Collectors.toSet()));
 
         JsonNode attacksArray = card.path("data").get(0).path("attacks");
-        // Проходим по каждой атаке
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         int i = 0;
         for (AttackSkill attackSkill : my_card.getSkills()) {
             attackSkill.setDescription(attacksArray.get(i).path("text").asText());
@@ -41,7 +41,7 @@ public class PkmnApplication {
 
 
         DatabaseServiceImpl db = new DatabaseServiceImpl();
-        // создание записей в базу данных
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         //db.createPokemonOwner(import_some_card.getPokemonOwner());
         //db.saveCardToDatabase(import_some_card);
         System.out.println(db.getStudentFromDatabase(import_some_card.getPokemonOwner().getSurName()));
@@ -49,4 +49,4 @@ public class PkmnApplication {
         db.getAllStudents();
         db.getAllCards();
     }
-}
+}*/

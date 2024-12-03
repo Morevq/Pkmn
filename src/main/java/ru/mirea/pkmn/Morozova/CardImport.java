@@ -1,10 +1,12 @@
 package ru.mirea.pkmn.Morozova;
 
+import lombok.Getter;
 import ru.mirea.pkmn.*;
 
 import java.io.*;
 import java.util.*;
 
+@Getter
 public class CardImport {
     private Card card;
     public CardImport(String filename) throws IOException {
@@ -17,14 +19,6 @@ public class CardImport {
         catch(Error e){
             System.out.println("Error " + e.toString());
         }
-    }
-
-    public Card getCard() {
-        return card;
-    }
-
-    private void setCard(Card card) {
-        this.card = card;
     }
 
     private String[] readLines(String filename) throws IOException {
@@ -85,42 +79,10 @@ public class CardImport {
     }
 
     private PokemonStage stage(String s){
-        if(s.equals("BASIC"))
-            return PokemonStage.BASIC;
-        else if(s.equals("STAGE1"))
-            return PokemonStage.STAGE1;
-        else if(s.equals("STAGE2"))
-            return PokemonStage.STAGE2;
-        else if(s.equals("VSTAR"))
-            return PokemonStage.VSTAR;
-        else if(s.equals("VMAX"))
-            return PokemonStage.VMAX;
-        return null;
+        return PokemonStage.valueOf(s);
     }
 
     private EnergyType type(String s){
-        if(s.equals("FIRE"))
-                return EnergyType.FIRE;
-        else if(s.equals("GRASS"))
-                return EnergyType.GRASS;
-        else if(s.equals("WATER"))
-                return EnergyType.WATER;
-        else if(s.equals("LIGHTNING"))
-                return EnergyType.LIGHTNING;
-        else if(s.equals("PSYCHIC"))
-                return EnergyType.PSYCHIC;
-        else if(s.equals("FIGHTING"))
-                return EnergyType.FIGHTING;
-        else if(s.equals("DARKNESS"))
-                return EnergyType.DARKNESS;
-        else if(s.equals("METAL"))
-                return EnergyType.METAL;
-        else if(s.equals("FAIRY"))
-                return EnergyType.FAIRY;
-        else if(s.equals("DRAGON"))
-                return EnergyType.DRAGON;
-        else if(s.equals("COLORLESS"))
-                return EnergyType.COLORLESS;
-        return null;
+        return EnergyType.valueOf(s);
     }
 }
