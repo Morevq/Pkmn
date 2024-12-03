@@ -22,12 +22,12 @@ public class DatabaseServiceImpl implements DatabaseService {
 
     public DatabaseServiceImpl() throws SQLException, IOException {
 
-        // Загружаем файл database.properties
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ database.properties
 
         databaseProperties = new Properties();
         databaseProperties.load(new FileInputStream("src/main/resources/database.properties"));
 
-        // Подключаемся к базе данных
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
         connection = DriverManager.getConnection(
                 databaseProperties.getProperty("database.url"),
@@ -38,36 +38,6 @@ public class DatabaseServiceImpl implements DatabaseService {
 
         try {
             Statement statement = connection.createStatement();
-            /*statement.execute("""
-                        PgSQL
-                        security=# c security demo
-                        You're now connected to database 'pkmn_db' as user 'pkmn_user'.
-                        security=> CREATE TABLE student (
-                          id uuid PRIMARY KEY,
-                          familyName TEXT,
-                          firstName TEXT,
-                          patronicName TEXT,
-                          grouppa TEXT
-                        );
-                    """);
-            statement.execute("""
-               CREATE TABLE card (
-                    id uuid PRIMARY KEY,
-                    name text,
-                    hp int2,
-                    evolves_from uuid,
-                    game_set text,
-                    card_number text,
-                    pokemon_owner uuid pkmn.student(id),
-                    stage text,
-                    retreat_cost text,
-                    weakness_type text,
-                    resistance_type text,
-                    attack_skill json,
-                    energy_type text,
-                    regulation_mark bpchar(1)
-                );
-            """);*/
             statement.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -75,45 +45,13 @@ public class DatabaseServiceImpl implements DatabaseService {
     }
 
     private PokemonStage setStage(String s){
-        if(s.equals("BASIC"))
-            return PokemonStage.BASIC;
-        else if(s.equals("STAGE1"))
-            return PokemonStage.STAGE1;
-        else if(s.equals("STAGE2"))
-            return PokemonStage.STAGE2;
-        else if(s.equals("VSTAR"))
-            return PokemonStage.VSTAR;
-        else if(s.equals("VMAX"))
-            return PokemonStage.VMAX;
-        return null;
+        return PokemonStage.valueOf(s);
     }
     private EnergyType setType(String s){
-        if(s.equals("FIRE"))
-            return EnergyType.FIRE;
-        else if(s.equals("GRASS"))
-            return EnergyType.GRASS;
-        else if(s.equals("WATER"))
-            return EnergyType.WATER;
-        else if(s.equals("LIGHTNING"))
-            return EnergyType.LIGHTNING;
-        else if(s.equals("PSYCHIC"))
-            return EnergyType.PSYCHIC;
-        else if(s.equals("FIGHTING"))
-            return EnergyType.FIGHTING;
-        else if(s.equals("DARKNESS"))
-            return EnergyType.DARKNESS;
-        else if(s.equals("METAL"))
-            return EnergyType.METAL;
-        else if(s.equals("FAIRY"))
-            return EnergyType.FAIRY;
-        else if(s.equals("DRAGON"))
-            return EnergyType.DRAGON;
-        else if(s.equals("COLORLESS"))
-            return EnergyType.COLORLESS;
-        return null;
+        return EnergyType.valueOf(s);
     }
 
-    //получение данных о карте из БД
+    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ
     @Override
     public Card getCardFromDatabase(String cardName) {
         try {
@@ -121,7 +59,7 @@ public class DatabaseServiceImpl implements DatabaseService {
             ResultSet resultSet = statement.executeQuery(
                     "SELECT * FROM card WHERE name = '" + cardName + "' AND pokemon_owner IS NOT NULL;");
 
-            // Данные из таблицы card
+            // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ card
             Card card = null;
             while (resultSet.next()) {
                 String name = resultSet.getString("name");
@@ -206,7 +144,7 @@ public class DatabaseServiceImpl implements DatabaseService {
                 "UPDATE student SET \"familyName\" = '" + studentSurname + "', \"firstName\" = '" + studentName + "' WHERE \"familyName\" = '" + studentSurname + "';");
     }
 
-    //получение данных о студенте из БД
+    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ
     @Override
     public Student getStudentFromDatabase(String studentSurname) {
         try {
@@ -214,7 +152,7 @@ public class DatabaseServiceImpl implements DatabaseService {
             ResultSet resultSet = statement.executeQuery(
                     "SELECT * FROM student WHERE \"familyName\" = '" + studentSurname + "';");
 
-            // Данные из таблицы student
+            // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ student
             Student student = null;
             while (resultSet.next()) {
                 String familyName = resultSet.getString("familyName");
@@ -234,7 +172,6 @@ public class DatabaseServiceImpl implements DatabaseService {
         }
     }
 
-    //отправка данных карты в БД
     @Override
     public void saveCardToDatabase(Card card) throws SQLException {
         Statement statement;
@@ -280,7 +217,7 @@ public class DatabaseServiceImpl implements DatabaseService {
         }
     }
 
-    //добавление студента - владельца карты в БД
+
     @Override
     public void createPokemonOwner(Student student) throws SQLException {
         try {

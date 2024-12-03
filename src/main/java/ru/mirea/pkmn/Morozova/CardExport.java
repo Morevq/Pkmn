@@ -1,9 +1,11 @@
 package ru.mirea.pkmn.Morozova;
 
+import lombok.Getter;
 import ru.mirea.pkmn.Card;
 
 import java.io.*;
 
+@Getter
 public class CardExport {
     public static final long serialVersionUID = 1L;
     Card card;
@@ -28,10 +30,6 @@ public class CardExport {
         Card card = (Card) objectInputStream.readObject();
         objectInputStream.close();
         fileInputStream.close();
-        return card;
-    }
-
-    public Card getCard() {
         return card;
     }
 }
