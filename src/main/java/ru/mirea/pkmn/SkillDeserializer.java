@@ -26,7 +26,6 @@ public class SkillDeserializer extends JsonDeserializer<AttackSkill> {
         skill.setCost(skillNode.get("cost").asText(""));
         skill.setDamage(skillNode.get("damage").asInt(0));
 
-
         return skill;
     }
 }
