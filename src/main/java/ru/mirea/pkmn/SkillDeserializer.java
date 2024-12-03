@@ -29,4 +29,3 @@ public class SkillDeserializer extends JsonDeserializer<AttackSkill> {
         return skill;
     }
 }
-
